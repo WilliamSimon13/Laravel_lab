@@ -6,6 +6,11 @@ use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
 
 return [
+    'custom' => [
+    'driver' => 'single',
+    'path' => storage_path('logs/custom.log'),
+    'level' => 'debug',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +59,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'slack'],
             'ignore_exceptions' => false,
         ],
 
